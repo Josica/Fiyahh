@@ -1,7 +1,10 @@
 require 'time'
-require 'pry'
-#require_relative 'display'
+
 class Commands
+  attr_reader :last_record
+  def initialize
+    @last_record = nil
+  end
 
   def seed_table
     get_data.each do |row|
@@ -10,7 +13,7 @@ class Commands
       incidentclass = row['incidentclassification']
       incidentcount = row['incidentcount']
       yearmonth = row['yearmonth']
-      db.execute('INSERT INTO FDNY (averageresponsetime ,incidentborough, incidentclassification, incidentcount, yearmonth) VALUES (?,?,?,?,?)', averageresponsetime ,incidentborough, incidentclass, incidentcount, yearmonth)
+      $db.execute('INSERT INTO FDNY (averageresponsetime ,incidentborough, incidentclassification, incidentcount, yearmonth) VALUES (?,?,?,?,?)', averageresponsetime ,incidentborough, incidentclass, incidentcount, yearmonth)
     end
   end
 
@@ -41,5 +44,22 @@ class Commands
     time.sort.last
   end
 
+  
+  def add_new_response
 
+    puts "Please enter new records"
+    p "Enter averageresponsetime"
+    averageresponsetime = gets.chomp.to_s
+    p 'Enter incidentborough'
+    incidentborough = gets.chomp.to_s
+    p 'Enter incidentclassification'
+    incidentclass = gets.chomp.to_s
+    p 'Enter incidentcount'
+    incidentcount = gets.chomp.to_s
+    p 'Enter year and the month attached'
+    yearmonth = gets.chomp.to_s
+
+    $db.execute('INSERT INTO FDNY (averageresponsetime ,incidentborough, incidentclassification, incidentcount, yearmonth) VALUES (?,?,?,?,?)', averageresponsetime ,incidentborough, incidentclass, incidentcount, yearmonth)
+    @last_record = $db.execute("SELECT * FROM FDNY")
+  end
 end
