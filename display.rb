@@ -1,8 +1,10 @@
+require_relative "sqlcommands"
 require 'colorize'
 class Display
-  attr_reader :answer
+  attr_reader :answer, :borough
   def initialize
     @answer = nil
+    @borough = nil
   end
 
 
@@ -20,15 +22,27 @@ _(())\\_)(|(_)(_)) )\\___ ((_)(_()((_|(_)  (_(_())  ((_)  (_))_(_))__ ((_)\\ _ )
     welcome
 
     puts var.colorize(:red).on_black
-    puts "CHOOSE A BOROUGH:  \ "
-    puts "BRONX"
-    puts "QUEENS"
-    puts "MANHATTAN"
-    puts "BROOKLYN"
-    puts "STATEN ISLAND"
+    puts "CHOOSE YOUR SEARCH:  \n "
+    puts "1 - AVERAGE RESPONSE"
+    puts "2 - FASTEST RESPONSE"
+    puts "3 - SLOWEST RESPONSE"
+    puts "4 - ADD NEW RECORD"
     @answer = gets.chomp
-
+    # binding.pry
   end
+
+  def prompt_user_borough
+    puts "CHOOSE A BOROUGH:  \n"
+    puts "Bronx"
+    puts "Queens"
+    puts "Manhttan"
+    puts "Brooklyn"
+    puts "Staten Island"
+    @borough = gets.chomp
+  end
+
+
+
 
   def dope_af_firetruck
     var = <<-firetruck
@@ -50,15 +64,78 @@ _(())\\_)(|(_)(_)) )\\___ ((_)(_()((_|(_)  (_(_())  ((_)  (_))_(_))__ ((_)\\ _ )
   end
 
   def display_avg_results(result)
-  puts "The average response time in #{@answer} was #{result}"
+    puts "The average response time in #{@answer} was #{result}"
   end
 
   def display_f_results(result)
-  puts "The fastest response time in #{@answer} was #{result.first}"
+    
+    
+    clouds = <<-clouds
+
+              ( `   )_
+             (    )    `)
+           (_   (_ .  _) _)
+                                          _
+                                         (  )
+          _ .                         ( `  ) . )
+        (  _ )_                      (_, _(  ,_)_)
+      (_  _(_ ,)
+                   
+      clouds
+
+    puts clouds.colorize(:blue)
+
+    var = <<-airplane 
+
+               _
+             -=\\ \\
+          |\\ ____\\_\\__
+        -=\\c`""""""" "`)
+     ---   `~~~~~/ /~~`
+             -==/ /
+               '-'
+          airplane
+
+    puts var.colorize(:yellow)          
+
+    puts "The fastest response time in #{@answer} was #{result.first}"
   end
 
   def display_s_results(result)
-  puts "The slowest response time in #{@answer} was #{result.first}"
+   var = <<-firetruck
+            ________
+           /.--..--,\\
+           //___||___\\___,
+   #%     / ,_,    -  ,_,  \\    
+  #%@#  =(_/(_)\\_____/(_)\\__)
+  
+    firetruck
+
+    puts var.colorize(:red)
+
+    puts "The slowest response time in #{@answer} was #{result.first}"
+  end
+
+  def display_new_record(new)
+
+    var = <<-fireman
+      .--"-.    Where's the fire?
+     /      "   LEmme use my hose to put it out!
+    :   (o"""|
+    / ,- `-._|
+  ,'-"  `,-'
+    /--.(
+   /   . \\
+   >    ) :
+   |\\  .\\ T
+   `.\\ ` Y
+    : \\  !.
+
+    fireman
+
+    puts var.colorize(:green)
+
+    puts "New record was entered by: #{new.last}"
   end
 
 end
