@@ -50,17 +50,15 @@ _(())\\_)(|(_)(_)) )\\___ ((_)(_()((_|(_)  (_(_())  ((_)  (_))_(_))__ ((_)\\ _ )
   end
 
   def display_avg_results(result)
-  puts "The average response time in #{@answer} was #{result}"
+    puts "The average response time in #{@answer} was #{result}"
   end
 
   def display_f_results(result)
-  puts "The fastest response time in #{@answer} was #{result.first}"
+    puts "The fastest response time in #{@answer} was #{result.first}"
   end
 
   def display_s_results(result)
-  puts "The slowest response time in #{@answer} was #{result.first}"
+    puts "The slowest response time in #{@answer} was #{result.first}"
   end
 
 end
-
-
