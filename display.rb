@@ -5,8 +5,6 @@ class Display
     @answer = nil
   end
 
-
-
   def prompt_user
   var = <<-welcome
                   (           )    *                    )    (    (       )           )    )
