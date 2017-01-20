@@ -57,6 +57,7 @@ _(())\\_)(|(_)(_)) )\\___ ((_)(_()((_|(_)  (_(_())  ((_)  (_))_(_))__ ((_)\\ _ )
 
   def display_s_results(result)
     puts "The slowest response time in #{@answer} was #{result.first}"
+    puts "The slowest response time in #{@answer} was #{result.first}"
   end
 
 end
